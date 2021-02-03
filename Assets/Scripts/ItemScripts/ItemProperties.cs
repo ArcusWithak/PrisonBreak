@@ -18,6 +18,13 @@ public abstract class ItemProperties
         get;
     }
 
+    //constructor
+    public ItemProperties(string itemName, float itemWeight)
+    {
+        this.itemName = itemName;
+        this.itemWeight = itemWeight;
+    }
+
     //methods
     public abstract string GetItemName();
 }

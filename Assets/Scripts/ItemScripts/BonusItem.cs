@@ -4,8 +4,16 @@ using UnityEngine;
 
 public class BonusItem : ItemProperties
 {
+    //properties
     public int bonusScore;
 
+    //constructor
+    public BonusItem(string itemName, float itemWeight, int bonusScore) : base(itemName, itemWeight)
+    {
+        this.bonusScore = bonusScore;
+    }
+
+    //methods
     private void Start()
     {
         base.itemWeight = 1;

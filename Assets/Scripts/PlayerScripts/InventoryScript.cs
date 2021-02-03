@@ -61,4 +61,25 @@ public class InventoryScript : MonoBehaviour
         print($"the inventory has {items.Count} items in it");
         print($"the weight is {currentWeight} kg out of a max of {maxWeight} kg");
     }
+
+    public virtual bool CanOpenDoor(int id)
+    {
+        bool result = false;
+        AccesItem script;
+
+        foreach (GameObject item in items)
+        {
+            script = item.GetComponent<AccesItem>();
+            if (script != null)
+            {
+                if (script.OpensDoor(id))
+                {
+                    result = true;
+                    break;
+                }
+            }
+        }
+
+        return result;
+    }
 }

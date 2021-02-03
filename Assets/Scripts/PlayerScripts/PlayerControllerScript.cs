@@ -59,7 +59,7 @@ public class PlayerControllerScript : InventoryScript
 
     protected override bool AddItem()
     {
-       return base.AddItem();
+        return base.AddItem();
     }
 
     protected override void RemoveItem()

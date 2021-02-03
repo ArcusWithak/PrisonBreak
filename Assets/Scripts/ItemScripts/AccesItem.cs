@@ -7,6 +7,12 @@ public class AccesItem : ItemProperties
     //properties
     public int accesIndex;
 
+    //constructor
+    public AccesItem(string itemName, float itemWeight, int accesIndex) : base(itemName, itemWeight)
+    {
+        this.accesIndex = accesIndex;
+    }
+
     //methods
     private void Start()
     {
@@ -16,5 +22,10 @@ public class AccesItem : ItemProperties
     public override string GetItemName()
     {
         return "accesItem";
+    }
+
+    public bool OpensDoor(int id)
+    {
+        return accesIndex == id;
     }
 }
