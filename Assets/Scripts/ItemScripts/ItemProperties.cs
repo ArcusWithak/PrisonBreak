@@ -19,10 +19,5 @@ public abstract class ItemProperties
     }
 
     //methods
-    public float GetItemWeight()
-    {
-        return itemWeight;
-    }
-
     public abstract string GetItemName();
 }

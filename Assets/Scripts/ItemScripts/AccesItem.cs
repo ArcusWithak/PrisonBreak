@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class AccesItem : ItemProperties
 {
+    //properties
     public int accesIndex;
 
+    //methods
     private void Start()
     {
         base.itemWeight = 1;

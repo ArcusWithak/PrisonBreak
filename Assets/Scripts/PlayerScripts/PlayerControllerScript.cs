@@ -5,22 +5,22 @@ using UnityEngine;
 public class PlayerControllerScript : InventoryScript
 {
     protected float speed = 5;
-    private float turnSpeed = 5;
+    private float turnSpeed = 20;
 
-    private Transform camera;
+    private Transform cameraTransfrom;
 
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
 
-        camera = transform.GetChild(0);
+        cameraTransfrom = transform.GetChild(0);
     }
 
     // Update is called once per frame
     void Update()
     {
         //player movement
-        if(Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
         {
             float speedH = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
             float speedV = Input.GetAxis("Vertical") * Time.deltaTime * speed;
@@ -29,24 +29,21 @@ public class PlayerControllerScript : InventoryScript
         }
 
         //camera controls
-        float mouseInputX = Input.GetAxis("Mouse X");
-        float mouseInputY = -Input.GetAxis("Mouse Y");
+        float mouseInputY = Input.GetAxis("Mouse X") * turnSpeed;
+        float mouseInputX = -Input.GetAxis("Mouse Y") * turnSpeed;
+
+        if (mouseInputY != 0)
+        {
+            mouseInputY += transform.eulerAngles.y;
+
+            transform.eulerAngles = new Vector3(transform.eulerAngles.x, mouseInputY, transform.eulerAngles.z);
+        }
 
         if (mouseInputX != 0)
         {
-            mouseInputX *= turnSpeed;
+            mouseInputX += cameraTransfrom.rotation.eulerAngles.x;
 
-            mouseInputX += transform.eulerAngles.y;
-
-            transform.eulerAngles = new Vector3(transform.eulerAngles.x, mouseInputX, transform.eulerAngles.z);
-        }
-        if(mouseInputY != 0)
-        {
-            mouseInputY *= turnSpeed;
-
-            mouseInputY += camera.localEulerAngles.x;
-
-            camera.localEulerAngles = new Vector3(Mathf.Clamp(mouseInputY, 0, 45), 0,0);
+            cameraTransfrom.rotation = Quaternion.Euler(Mathf.Clamp(mouseInputX, 0, 45), cameraTransfrom.eulerAngles.y, cameraTransfrom.eulerAngles.z);
         }
 
         //inventory controlls
@@ -60,17 +57,9 @@ public class PlayerControllerScript : InventoryScript
         }
     }
 
-
-
-
-
-
-
-
-
-    protected override void AddItem()
+    protected override bool AddItem()
     {
-        base.AddItem();
+       return base.AddItem();
     }
 
     protected override void RemoveItem()
