@@ -10,29 +10,17 @@ public class InventoryScript : MonoBehaviour
 
     public GameObject newObject;
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            AddItem();
-        }
-        else if (Input.GetKeyDown(KeyCode.Q))
-        {
-            RemoveItem();
-        }
-    }
-
-    protected void AddItem()
+    protected virtual void AddItem()
     {
         ItemProperties script = newObject.GetComponent<ItemProperties>();
-        float addedWeight = script.GetItemWeight();
+        float addedWeight = script.itemWeight;
 
         if ((addedWeight + currentWeight) <= maxWeight)
         {
             print("item picked up");
 
             currentWeight += addedWeight;
-            items.Add(script.gameObject);
+            items.Add(newObject);
         }
         else
         {
@@ -42,16 +30,16 @@ public class InventoryScript : MonoBehaviour
         print(script.GetItemName());
     }
 
-    protected void RemoveItem()
+    protected virtual void RemoveItem()
     {
         if (items.Count > 0)
         {
             ItemProperties script = items[0].GetComponent<ItemProperties>();
-            float removedWeight = script.GetItemWeight();
+            float removedWeight = script.itemWeight;
 
             currentWeight -= removedWeight;
 
-            items.Remove(script.gameObject);
+            items.Remove(items[0]);
 
             Debug.Log($"current weight:{currentWeight}");
 

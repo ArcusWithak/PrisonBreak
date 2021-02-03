@@ -2,11 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ItemProperties : MonoBehaviour
+public abstract class ItemProperties
 {
-    protected string itemName;
-    protected float itemWeight;
+    //properties
+    public string itemName
+    {
+        protected set;
 
+        get;
+    }
+    public float itemWeight
+    {
+        protected set;
+
+        get;
+    }
+
+    //methods
     public float GetItemWeight()
     {
         return itemWeight;
