@@ -18,6 +18,11 @@ public class PuzzleItem : ItemProperties
     }
 
     //methods
+    public override string ToString()
+    {
+        return base.ToString() + $"| the riddle is is {riddle}| awnser is {keyWord}";
+    }
+
     public bool AwnserIsTo(string input)
     {
         Debug.Log($"the qeustion was: {riddle}, your anwser was {input}, the awnser is {keyWord}");

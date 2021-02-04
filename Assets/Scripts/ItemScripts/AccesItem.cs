@@ -14,6 +14,10 @@ public class AccesItem : ItemProperties
     }
 
     //methods
+    public override string ToString()
+    {
+        return base.ToString() + $"| acces number is {accesIndex}";
+    }
 
     public bool OpensDoor(int id)
     {

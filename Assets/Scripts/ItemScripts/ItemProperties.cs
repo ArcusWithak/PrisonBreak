@@ -13,8 +13,11 @@ public abstract class ItemProperties
     {
         this.itemName = itemName;
         this.itemWeight = itemWeight;
-    }   
+    }
 
     //methods
-
+    public override string ToString()
+    {
+        return $"type is: {base.ToString()}| name is: {itemName}| weight is {itemWeight}";
+    }
 }

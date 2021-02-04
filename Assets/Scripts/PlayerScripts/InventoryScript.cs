@@ -9,7 +9,7 @@ public class InventoryScript : MonoBehaviour
     /// </summary>
     private float currentWeight = 0;
     private float maxWeight = 100;
-    public List<ItemProperties> items;
+    public List<ItemProperties> items = new List<ItemProperties>();
 
     /// <summary>
     /// methods
@@ -17,7 +17,6 @@ public class InventoryScript : MonoBehaviour
     /// <returns></returns>
     protected virtual void Start()
     {
-        items = new List<ItemProperties>();
         AddTestItem(new AccesItem("key of a little bit of doom", 10, 1));
         AddTestItem(new BonusItem("potato of the atheistic gods", 50, 50));
         AddTestItem(new BonusItem("globe of temporary sunlight", 50, 100));
@@ -33,14 +32,13 @@ public class InventoryScript : MonoBehaviour
 
     protected virtual bool AddItem(ItemProperties newItem)
     {
-        if ((newItem.itemWeight + currentWeight) <= maxWeight)
-        {
-            currentWeight += newItem.itemWeight;
-            items.Add(newItem);
+        if ((newItem.itemWeight + currentWeight) > maxWeight) { return false; }
 
-            return true;
-        }
-            return false;
+        currentWeight += newItem.itemWeight;
+
+        items.Add(newItem);
+
+        return true;
     }
 
     protected virtual bool RemoveItem(ItemProperties newItem)
@@ -116,7 +114,7 @@ public class InventoryScript : MonoBehaviour
         Debug.Log($"the weight is {currentWeight} kg out of a max of {maxWeight} kg");
         foreach (ItemProperties item in items)
         {
-            Debug.Log($"{item.itemName} is in the inventory with a weight of: {item.itemWeight}");
+            Debug.Log(item.ToString());
         }
     }
 

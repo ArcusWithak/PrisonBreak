@@ -14,4 +14,8 @@ public class BonusItem : ItemProperties
     }
 
     //methods
+    public override string ToString()
+    {
+        return base.ToString() + $"| bonus score is {bonusScore}";
+    }
 }
