@@ -23,6 +23,8 @@ public class InventoryScript : MonoBehaviour
         AddTestItem(new BonusItem("globe of temporary sunlight", 50, 100));
         AddTestItem(new PuzzleItem("sticky riddle", 10, "stick", "what is brown and sticky?"));
 
+        DebugInventory();
+
         TryDoor(1);
         TryDoor(2);
         TryRiddle("stick");
@@ -36,17 +38,9 @@ public class InventoryScript : MonoBehaviour
             currentWeight += newItem.itemWeight;
             items.Add(newItem);
 
-            Debug.Log("item picked up");
-
             return true;
         }
-        else
-        {
-            Debug.Log("item to Heavy");
-
             return false;
-        }
-
     }
 
     protected virtual bool RemoveItem(ItemProperties newItem)
@@ -56,8 +50,6 @@ public class InventoryScript : MonoBehaviour
             if (items.Remove(newItem))
             {
                 currentWeight -= newItem.itemWeight;
-
-                Debug.Log($"current weight:{currentWeight}");
 
                 return true;
             }
