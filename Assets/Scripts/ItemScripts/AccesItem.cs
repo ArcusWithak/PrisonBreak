@@ -14,14 +14,9 @@ public class AccesItem : ItemProperties
     }
 
     //methods
-    private void Start()
-    {
-        base.itemWeight = 1;
-    }
-
     public override string GetItemName()
     {
-        return "accesItem";
+        return itemName;
     }
 
     public bool OpensDoor(int id)

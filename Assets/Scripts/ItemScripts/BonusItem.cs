@@ -14,14 +14,8 @@ public class BonusItem : ItemProperties
     }
 
     //methods
-    private void Start()
-    {
-        base.itemWeight = 1;
-    }
-
     public override string GetItemName()
     {
-        base.itemName = "bonusItem";
-        return base.itemName;
+        return itemName;
     }
 }

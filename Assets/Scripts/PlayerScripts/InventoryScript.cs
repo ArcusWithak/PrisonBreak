@@ -4,21 +4,28 @@ using UnityEngine;
 
 public class InventoryScript : MonoBehaviour
 {
+    /// <summary>
+    /// properties
+    /// </summary>
     private float currentWeight = 0;
     private float maxWeight = 10;
     public List<GameObject> items;
 
     public GameObject newObject;
 
+    /// <summary>
+    /// methods
+    /// </summary>
+    /// <returns></returns>
     protected virtual bool AddItem()
     {
         ItemProperties script = newObject.GetComponent<ItemProperties>();
 
-        print(script.GetItemName());
+        Debug.Log(script.GetItemName());
 
         if ((script.itemWeight + currentWeight) <= maxWeight)
         {
-            print("item picked up");
+            Debug.Log("item picked up");
 
             currentWeight += script.itemWeight;
             items.Add(newObject);
@@ -27,7 +34,7 @@ public class InventoryScript : MonoBehaviour
         }
         else
         {
-            print("item to Heavy");
+            Debug.Log("item to Heavy");
 
             return false;
         }
@@ -46,7 +53,7 @@ public class InventoryScript : MonoBehaviour
 
                 Debug.Log($"current weight:{currentWeight}");
             }
-            print(script.GetItemName());
+            Debug.Log(script.GetItemName());
         }
     }
 
@@ -55,12 +62,6 @@ public class InventoryScript : MonoBehaviour
         return currentWeight;
     }
 
-    public void DebugInventory()
-    {
-        print("=============================DEBUG INVENTORY====================================");
-        print($"the inventory has {items.Count} items in it");
-        print($"the weight is {currentWeight} kg out of a max of {maxWeight} kg");
-    }
 
     public virtual bool CanOpenDoor(int id)
     {
@@ -81,5 +82,15 @@ public class InventoryScript : MonoBehaviour
         }
 
         return result;
+    }
+
+    /// <summary>
+    /// Debuggin methods
+    /// </summary>
+    public void DebugInventory()
+    {
+        Debug.Log("=============================DEBUG INVENTORY====================================");
+        Debug.Log($"the inventory has {items.Count} items in it");
+        Debug.Log($"the weight is {currentWeight} kg out of a max of {maxWeight} kg");
     }
 }
