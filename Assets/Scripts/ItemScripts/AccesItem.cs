@@ -14,10 +14,6 @@ public class AccesItem : ItemProperties
     }
 
     //methods
-    public override string GetItemName()
-    {
-        return itemName;
-    }
 
     public bool OpensDoor(int id)
     {

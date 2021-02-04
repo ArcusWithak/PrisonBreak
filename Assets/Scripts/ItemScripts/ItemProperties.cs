@@ -13,8 +13,8 @@ public abstract class ItemProperties
     {
         this.itemName = itemName;
         this.itemWeight = itemWeight;
-    }
+    }   
 
     //methods
-    public abstract string GetItemName();
+
 }

@@ -14,8 +14,4 @@ public class BonusItem : ItemProperties
     }
 
     //methods
-    public override string GetItemName()
-    {
-        return itemName;
-    }
 }

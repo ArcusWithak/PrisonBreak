@@ -21,6 +21,12 @@ public class InventoryScript : MonoBehaviour
         AddTestItem(new AccesItem("key of a little bit of doom", 10, 1));
         AddTestItem(new BonusItem("potato of the atheistic gods", 50, 50));
         AddTestItem(new BonusItem("globe of temporary sunlight", 50, 100));
+        AddTestItem(new PuzzleItem("sticky riddle", 10, "stick", "what is brown and sticky?"));
+
+        TryDoor(1);
+        TryDoor(2);
+        TryRiddle("stick");
+        TryRiddle("not a stick");
     }
 
     protected virtual bool AddItem(ItemProperties newItem)
@@ -28,7 +34,6 @@ public class InventoryScript : MonoBehaviour
         if ((newItem.itemWeight + currentWeight) <= maxWeight)
         {
             currentWeight += newItem.itemWeight;
-            print(newItem);
             items.Add(newItem);
 
             Debug.Log("item picked up");
@@ -56,7 +61,6 @@ public class InventoryScript : MonoBehaviour
 
                 return true;
             }
-            Debug.Log(newItem.GetItemName());
         }
 
         return false;
@@ -71,14 +75,35 @@ public class InventoryScript : MonoBehaviour
     public virtual bool CanOpenDoor(int id)
     {
         bool result = false;
-        AccesItem script;
+        AccesItem key;
 
         foreach (ItemProperties item in items)
         {
             if (item is AccesItem)
             {
-                script = (AccesItem)item;
-                if (script.OpensDoor(id))
+                key = (AccesItem)item;
+                if (key.OpensDoor(id))
+                {
+                    result = true;
+                    break;
+                }
+            }
+        }
+
+        return result;
+    }
+
+    public virtual bool CanAwnserRiddle(string awnser)
+    {
+        bool result = false;
+        PuzzleItem riddle;
+
+        foreach (ItemProperties item in items)
+        {
+            if (item is PuzzleItem)
+            {
+                riddle = (PuzzleItem)item;
+                if (riddle.AwnserIsTo(awnser))
                 {
                     result = true;
                     break;
@@ -124,6 +149,30 @@ public class InventoryScript : MonoBehaviour
         else
         {
             Debug.LogWarning($"{item.itemName} failed to remove");
+        }
+    }
+
+    public void TryDoor(int id)
+    {
+        if (CanOpenDoor(id))
+        {
+            Debug.Log($"door {id} opend succesfully");
+        }
+        else
+        {
+            Debug.LogWarning($"door {id} failed to open");
+        }
+    }
+
+    public void TryRiddle(string input)
+    {
+        if (CanAwnserRiddle(input))
+        {
+            Debug.Log($"{input} is the correct awnser to riddle");
+        }
+        else
+        {
+            Debug.LogWarning($"{input} is the correct wrong awnser to riddle");
         }
     }
 }
