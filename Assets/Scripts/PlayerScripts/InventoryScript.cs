@@ -164,7 +164,7 @@ public class InventoryScript : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning($"{input} is the correct wrong awnser to riddle");
+            Debug.LogWarning($"{input} is the wrong awnser to riddle");
         }
     }
 }

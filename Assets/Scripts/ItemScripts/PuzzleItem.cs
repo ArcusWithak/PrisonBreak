@@ -5,9 +5,9 @@ using UnityEngine;
 public class PuzzleItem : ItemProperties
 {
     //properties
-    public string keyWord;
-    public string riddle;
-    public bool Solved;
+    public string keyWord { get; private set; }
+    public string riddle { get; private set; }
+    public bool Solved { get; private set; }
 
     //constructor
     public PuzzleItem(string itemName, float ItemWeight, string keyWord, string riddle) : base(itemName, ItemWeight)
