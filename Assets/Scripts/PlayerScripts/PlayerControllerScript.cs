@@ -9,8 +9,10 @@ public class PlayerControllerScript : InventoryScript
 
     private Transform cameraTransfrom;
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
+
         Cursor.lockState = CursorLockMode.Locked;
 
         cameraTransfrom = transform.GetChild(0);
@@ -46,24 +48,24 @@ public class PlayerControllerScript : InventoryScript
             cameraTransfrom.rotation = Quaternion.Euler(Mathf.Clamp(mouseInputX, 0, 45), cameraTransfrom.eulerAngles.y, cameraTransfrom.eulerAngles.z);
         }
 
-        //inventory controlls
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            AddItem();
-        }
-        else if (Input.GetKeyDown(KeyCode.Q))
-        {
-            RemoveItem();
-        }
+    //    //inventory controlls
+    //    if (Input.GetKeyDown(KeyCode.E))
+    //    {
+    //        AddItem();
+    //    }
+    //    else if (Input.GetKeyDown(KeyCode.Q))
+    //    {
+    //        RemoveItem();
+    //    }
     }
 
-    protected override bool AddItem()
-    {
-        return base.AddItem();
-    }
+    //protected override bool AddItem()
+    //{
+    //    return base.AddItem();
+    //}
 
-    protected override void RemoveItem()
-    {
-        base.RemoveItem();
-    }
+    //protected override void RemoveItem()
+    //{
+    //    base.RemoveItem();
+    //}
 }

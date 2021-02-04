@@ -5,18 +5,8 @@ using UnityEngine;
 public abstract class ItemProperties
 {
     //properties
-    public string itemName
-    {
-        protected set;
-
-        get;
-    }
-    public float itemWeight
-    {
-        protected set;
-
-        get;
-    }
+    public string itemName{ protected set; get; }
+    public float itemWeight{ protected set; get;}
 
     //constructor
     public ItemProperties(string itemName, float itemWeight)
