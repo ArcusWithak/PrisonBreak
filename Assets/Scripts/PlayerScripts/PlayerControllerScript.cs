@@ -2,20 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerControllerScript : InventoryScript
+public class PlayerControllerScript : MonoBehaviour
 {
-    protected float speed = 5;
-    private float turnSpeed = 20;
-
+    private InventoryScript inventory;
     private Transform cameraTransfrom;
 
-    protected override void Start()
+
+    [Header("Movement Speed")]
+    public float speed = 5;
+
+    [Space(10)]
+    [Header("CameraTurning speed")]
+    public float turnSpeed = 20;
+
+    [Space(10)]
+    [Header("max weight on game start")]
+    public float initalMaxWeight;
+
+    [Space(10)]
+    [Header("range of picking up items")]
+    public float pickUpRange;
+
+    protected void Start()
     {
-        base.Start();
-
         Cursor.lockState = CursorLockMode.Locked;
-
         cameraTransfrom = transform.GetChild(0);
+
+        inventory = new InventoryScript(initalMaxWeight);
     }
 
     // Update is called once per frame
@@ -48,24 +61,27 @@ public class PlayerControllerScript : InventoryScript
             cameraTransfrom.rotation = Quaternion.Euler(Mathf.Clamp(mouseInputX, 0, 45), cameraTransfrom.eulerAngles.y, cameraTransfrom.eulerAngles.z);
         }
 
-    //    //inventory controlls
-    //    if (Input.GetKeyDown(KeyCode.E))
-    //    {
-    //        AddItem();
-    //    }
-    //    else if (Input.GetKeyDown(KeyCode.Q))
-    //    {
-    //        RemoveItem();
-    //    }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Collider[] colliders = Physics.OverlapSphere(transform.position, pickUpRange);
+            foreach (Collider item in colliders)
+            {
+                if (item.CompareTag("Interactable"))
+                {
+                    Interaction(item.GetComponent<Iinteractable>());
+                    break;
+                }
+            }
+        }
     }
 
-    //protected override bool AddItem()
-    //{
-    //    return base.AddItem();
-    //}
+    public void Interaction(Iinteractable iinteractable)
+    {
+        iinteractable.action(this);
+    }
 
-    //protected override void RemoveItem()
-    //{
-    //    base.RemoveItem();
-    //}
+    public bool AddItem(ItemProperties item)
+    {
+        return inventory.AddItem(item);
+    }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InventoryScript : MonoBehaviour
+public class InventoryScript
 {
     /// <summary>
     /// properties
@@ -10,6 +10,18 @@ public class InventoryScript : MonoBehaviour
     private float currentWeight = 0;
     private float maxWeight = 100;
     public List<ItemProperties> items = new List<ItemProperties>();
+
+    public InventoryScript()
+    {
+        maxWeight = 100;
+        items = new List<ItemProperties>();
+        currentWeight = 0;
+    }
+
+    public InventoryScript(float maxWeight) : this ()
+    {
+        this.maxWeight = maxWeight;
+    }
 
     /// <summary>
     /// methods
@@ -30,7 +42,7 @@ public class InventoryScript : MonoBehaviour
         TryRiddle("not a stick");
     }
 
-    protected virtual bool AddItem(ItemProperties newItem)
+    public bool AddItem(ItemProperties newItem)
     {
         if ((newItem.itemWeight + currentWeight) > maxWeight) { return false; }
 
