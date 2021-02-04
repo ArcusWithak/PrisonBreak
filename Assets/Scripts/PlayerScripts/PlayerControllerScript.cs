@@ -84,4 +84,9 @@ public class PlayerControllerScript : MonoBehaviour
     {
         return inventory.AddItem(item);
     }
+
+    public bool OpenDoor(int id)
+    {
+        return inventory.CanOpenDoor(id);
+    }
 }
