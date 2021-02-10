@@ -75,6 +75,10 @@ public class Inventory
         return currentWeight;
     }
 
+    public float GetMaxWeight()
+    {
+        return maxWeight;
+    }
 
     public virtual bool CanOpenDoor(int id)
     {

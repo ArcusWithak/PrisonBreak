@@ -82,7 +82,7 @@ public class PlayerControllerScript : InventoryInteraction
         {
             if (inventoryItems.Count > 0)
             {
-                RemoveItem(0);
+                RemoveItem(inventoryItems.Count - 1);
             }
             else
             {
@@ -115,7 +115,7 @@ public class PlayerControllerScript : InventoryInteraction
         return inventory.CanOpenDoor(id);
     }
 
-    protected override void RemoveItem(int ItemIndex)
+    public override void RemoveItem(int ItemIndex)
     {
         if (inventory.RemoveItem(ItemIndex))
         {
