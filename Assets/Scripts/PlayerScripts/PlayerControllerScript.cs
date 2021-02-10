@@ -65,7 +65,6 @@ public class PlayerControllerScript : InventoryInteraction
                 {
                     if (Vector3.Angle(transform.forward, item.gameObject.transform.position) < 45)
                     {
-                        print(Vector3.Angle(transform.forward, item.gameObject.transform.position));
                         Interaction(item.GetComponent<Iinteractable>());
                         break;
                     }
