@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InventoryScript
+public class Inventory
 {
     /// <summary>
     /// properties
@@ -11,14 +11,14 @@ public class InventoryScript
     private float maxWeight = 100;
     public List<ItemProperties> items = new List<ItemProperties>();
 
-    public InventoryScript()
+    public Inventory()
     {
         maxWeight = 100;
         items = new List<ItemProperties>();
         currentWeight = 0;
     }
 
-    public InventoryScript(float maxWeight) : this ()
+    public Inventory(float maxWeight) : this ()
     {
         this.maxWeight = maxWeight;
     }

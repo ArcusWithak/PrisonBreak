@@ -29,49 +29,53 @@ public class PlayerControllerScript : InventoryInteraction
     // Update is called once per frame
     void Update()
     {
-        //player movement
-        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+        if (Cursor.lockState == CursorLockMode.Locked)
         {
-            float speedH = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
-            float speedV = Input.GetAxis("Vertical") * Time.deltaTime * speed;
-
-            transform.Translate(speedH, 0, speedV);
-        }
-
-        //camera controls
-        float mouseInputY = Input.GetAxis("Mouse X") * turnSpeed;
-        float mouseInputX = -Input.GetAxis("Mouse Y") * turnSpeed;
-
-        if (mouseInputY != 0)
-        {
-            mouseInputY += transform.eulerAngles.y;
-
-            transform.eulerAngles = new Vector3(transform.eulerAngles.x, mouseInputY, transform.eulerAngles.z);
-        }
-
-        if (mouseInputX != 0)
-        {
-            mouseInputX += cameraTransfrom.rotation.eulerAngles.x;
-
-            cameraTransfrom.rotation = Quaternion.Euler(Mathf.Clamp(mouseInputX, 0, 45), cameraTransfrom.eulerAngles.y, cameraTransfrom.eulerAngles.z);
-        }
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            Collider[] colliders = Physics.OverlapSphere(transform.position, pickUpRange);
-            foreach (Collider item in colliders)
+            //player movement
+            if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
             {
-                if (item.CompareTag("Interactable"))
-                {
-                    Vector3 direction =  item.transform.position - transform.position;
+                float speedH = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
+                float speedV = Input.GetAxis("Vertical") * Time.deltaTime * speed;
 
-                    if (Vector3.Angle(direction, transform.forward) < 45)
+                transform.Translate(speedH, 0, speedV);
+            }
+
+            //camera controls
+            float mouseInputY = Input.GetAxis("Mouse X") * turnSpeed;
+            float mouseInputX = -Input.GetAxis("Mouse Y") * turnSpeed;
+
+            if (mouseInputY != 0)
+            {
+                mouseInputY += transform.eulerAngles.y;
+
+                transform.eulerAngles = new Vector3(transform.eulerAngles.x, mouseInputY, transform.eulerAngles.z);
+            }
+
+            if (mouseInputX != 0)
+            {
+                mouseInputX += cameraTransfrom.rotation.eulerAngles.x;
+
+                cameraTransfrom.rotation = Quaternion.Euler(Mathf.Clamp(mouseInputX, 0, 45), cameraTransfrom.eulerAngles.y, cameraTransfrom.eulerAngles.z);
+            }
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                Collider[] colliders = Physics.OverlapSphere(transform.position, pickUpRange);
+                foreach (Collider item in colliders)
+                {
+                    if (item.CompareTag("Interactable"))
                     {
-                        Interaction(item.GetComponent<Iinteractable>());
-                        break;
+                        Vector3 direction = item.transform.position - transform.position;
+
+                        if (Vector3.Angle(direction, transform.forward) < 45)
+                        {
+                            Interaction(item.GetComponent<Iinteractable>());
+                            break;
+                        }
                     }
                 }
             }
+
         }
 
         if (Input.GetKeyDown(KeyCode.Q))
@@ -84,6 +88,11 @@ public class PlayerControllerScript : InventoryInteraction
             {
                 print("inventory empty");
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            OpenCloseInventoryUi();
         }
     }
 

@@ -9,14 +9,18 @@ public class InventoryInteraction : MonoBehaviour
     [Header("max weight on game start")]
     public float initalMaxWeight;
 
-    protected InventoryScript inventory;
+    protected Inventory inventory;
 
     public List<GameObject> inventoryItems;
+
+    private GameObject inventoryPanel;
 
     protected virtual void Start()
     {
         inventoryItems = new List<GameObject>();
-        inventory = new InventoryScript(initalMaxWeight);
+        inventory = new Inventory(initalMaxWeight);
+
+        inventoryPanel = transform.GetChild(0).GetChild(0).GetChild(0).gameObject;
     }
 
     public virtual bool AddItem(GameObject itemObject, ItemProperties item = null)
@@ -33,5 +37,19 @@ public class InventoryInteraction : MonoBehaviour
         inventoryItems[ItemIndex].SetActive(true);
 
         inventoryItems.Remove(inventoryItems[ItemIndex]);
+    }
+
+    protected void OpenCloseInventoryUi()
+    {
+        inventoryPanel.gameObject.SetActive(!inventoryPanel.activeSelf);
+
+        if(Cursor.lockState == CursorLockMode.Locked)
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
     }
 }
