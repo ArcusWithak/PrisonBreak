@@ -63,8 +63,12 @@ public class PlayerControllerScript : InventoryInteraction
             {
                 if (item.CompareTag("Interactable"))
                 {
-                    Interaction(item.GetComponent<Iinteractable>());
-                    break;
+                    if (Vector3.Angle(transform.forward, item.gameObject.transform.position) < 45)
+                    {
+                        print(Vector3.Angle(transform.forward, item.gameObject.transform.position));
+                        Interaction(item.GetComponent<Iinteractable>());
+                        break;
+                    }
                 }
             }
         }
