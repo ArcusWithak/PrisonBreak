@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerControllerScript : MonoBehaviour
+public class PlayerControllerScript : InventoryInteraction
 {
-    private InventoryScript inventory;
     private Transform cameraTransfrom;
 
 
@@ -16,19 +15,15 @@ public class PlayerControllerScript : MonoBehaviour
     public float turnSpeed = 20;
 
     [Space(10)]
-    [Header("max weight on game start")]
-    public float initalMaxWeight;
-
-    [Space(10)]
     [Header("range of picking up items")]
     public float pickUpRange;
 
-    protected void Start()
+    protected override void Start()
     {
+        base.Start();
+
         Cursor.lockState = CursorLockMode.Locked;
         cameraTransfrom = transform.GetChild(0);
-
-        inventory = new InventoryScript(initalMaxWeight);
     }
 
     // Update is called once per frame
@@ -73,21 +68,44 @@ public class PlayerControllerScript : MonoBehaviour
                 }
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            if (inventoryItems.Count > 0)
+            {
+                RemoveItem(0);
+            }
+            else
+            {
+                print("inventory empty");
+            }
+        }
     }
 
-
-    public void Interaction(Iinteractable iinteractable)
+    public void Interaction(Iinteractable interactable)
     {
-        iinteractable.action(this);
+        interactable.action(this);
     }
 
-    public bool AddItem(ItemProperties item)
+    public override bool AddItem(GameObject itemObject, ItemProperties item = null)
     {
-        return inventory.AddItem(item);
+        if (inventory.AddItem(item))
+        {
+            return base.AddItem(itemObject, item);
+        }
+        return false;
     }
 
     public bool OpenDoor(int id)
     {
         return inventory.CanOpenDoor(id);
+    }
+
+    protected override void RemoveItem(int ItemIndex)
+    {
+        if (inventory.RemoveItem(ItemIndex))
+        {
+            base.RemoveItem(ItemIndex);
+        }
     }
 }

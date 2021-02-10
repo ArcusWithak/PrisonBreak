@@ -53,8 +53,10 @@ public class InventoryScript
         return true;
     }
 
-    protected virtual bool RemoveItem(ItemProperties newItem)
+    public  bool RemoveItem(int ItemIndex)
     {
+        ItemProperties newItem = items[ItemIndex];
+
         if (items.Count > 0)
         {
             if (items.Remove(newItem))
@@ -142,15 +144,15 @@ public class InventoryScript
         }
     }
 
-    public void RemoveTestItem(ItemProperties item)
+    public void RemoveTestItem(int itemIndex)
     {
-        if (RemoveItem(item))
+        if (RemoveItem(itemIndex))
         {
-            Debug.Log($"{item.itemName} succesfully removed");
+            Debug.Log($"item succesfully removed");
         }
         else
         {
-            Debug.LogWarning($"{item.itemName} failed to remove");
+            Debug.LogWarning($"item failed to remove");
         }
     }
 
