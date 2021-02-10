@@ -22,12 +22,14 @@ public class InventoryInteraction : MonoBehaviour
     public virtual bool AddItem(GameObject itemObject, ItemProperties item = null)
     {
         inventoryItems.Add(itemObject);
+        itemObject.SetActive(false);
         return true;
     }
 
     protected virtual void RemoveItem(int ItemIndex)
     {
         inventoryItems[ItemIndex].transform.position = transform.position + (transform.forward * 2);
+        inventoryItems[ItemIndex].transform.rotation = Quaternion.identity;
         inventoryItems[ItemIndex].SetActive(true);
 
         inventoryItems.Remove(inventoryItems[ItemIndex]);

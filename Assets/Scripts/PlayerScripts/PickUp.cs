@@ -16,10 +16,7 @@ public abstract class PickUp : MonoBehaviour, Iinteractable
 
     public void action(PlayerControllerScript player)
     {
-        if (player.AddItem(this.gameObject, CreateItem()))
-        {
-            gameObject.SetActive(false);
-        }
+        player.AddItem(this.gameObject, CreateItem());
     }
 
     public abstract ItemProperties CreateItem();
