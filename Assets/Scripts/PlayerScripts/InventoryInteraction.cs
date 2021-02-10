@@ -26,9 +26,8 @@ public class InventoryInteraction : MonoBehaviour
 
     protected virtual void RemoveItem(int ItemIndex)
     {
-        GameObject newItem = Instantiate(inventoryItems[ItemIndex], transform.position + (transform.forward * 2), Quaternion.identity);
-
-        newItem.SetActive(true);
+        inventoryItems[ItemIndex].transform.position = transform.position + (transform.forward * 2);
+        inventoryItems[ItemIndex].SetActive(true);
 
         inventoryItems.Remove(inventoryItems[ItemIndex]);
     }

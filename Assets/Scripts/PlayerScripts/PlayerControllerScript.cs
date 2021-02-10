@@ -91,7 +91,7 @@ public class PlayerControllerScript : InventoryInteraction
     {
         if (inventory.AddItem(item))
         {
-            return base.AddItem(itemObject, item);
+            return base.AddItem(itemObject);
         }
         return false;
     }
