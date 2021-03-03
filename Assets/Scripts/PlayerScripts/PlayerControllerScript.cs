@@ -69,6 +69,10 @@ public class PlayerControllerScript : InventoryInteraction
 
                         if (Vector3.Angle(direction, transform.forward) < 45)
                         {
+                            RaycastHit hit;
+                            Physics.Raycast(transform.position, transform.forward, out hit, pickUpRange);
+
+                            if(hit.transform.CompareTag("Interactable"))
                             Interaction(item.GetComponent<Iinteractable>());
                             break;
                         }
