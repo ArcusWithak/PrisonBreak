@@ -6,7 +6,6 @@ public class PlayerControllerScript : InventoryInteraction
 {
     private Transform cameraTransfrom;
 
-
     [Header("Movement Speed")]
     public float speed = 5;
 
@@ -71,10 +70,12 @@ public class PlayerControllerScript : InventoryInteraction
                         {
                             RaycastHit hit;
                             Physics.Raycast(transform.position, transform.forward, out hit, pickUpRange);
-
-                            if(hit.transform.CompareTag("Interactable"))
-                            Interaction(item.GetComponent<Iinteractable>());
-                            break;
+                            print(hit.transform.tag);
+                            if (hit.transform.CompareTag("Interactable"))
+                            {
+                                Interaction(item.GetComponent<Iinteractable>());
+                                break;
+                            }
                         }
                     }
                 }
