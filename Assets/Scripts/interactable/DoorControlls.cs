@@ -31,5 +31,9 @@ public class DoorControlls : MonoBehaviour, Iinteractable
                 transform.eulerAngles = startingRotation + new Vector3(0, 90, 0);
             }
         }
+        else
+        {
+            player.GiveFeedBack("it's locked, have to find the key");
+        }
     }
 }

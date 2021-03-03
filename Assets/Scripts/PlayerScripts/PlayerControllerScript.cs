@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerControllerScript : InventoryInteraction
 {
     private Transform cameraTransfrom;
+
 
     [Header("Movement Speed")]
     public float speed = 5;
@@ -16,6 +18,8 @@ public class PlayerControllerScript : InventoryInteraction
     [Space(10)]
     [Header("range of picking up items")]
     public float pickUpRange;
+
+    public Text feedbackText;
 
     protected override void Start()
     {
@@ -69,12 +73,13 @@ public class PlayerControllerScript : InventoryInteraction
                         if (Vector3.Angle(direction, transform.forward) < 45)
                         {
                             RaycastHit hit;
-                            Physics.Raycast(transform.position, transform.forward, out hit, pickUpRange);
-                            print(hit.transform.tag);
-                            if (hit.transform.CompareTag("Interactable"))
+                            if (Physics.Raycast(transform.position, transform.forward, out hit, pickUpRange))
                             {
-                                Interaction(item.GetComponent<Iinteractable>());
-                                break;
+                                if (hit.transform.CompareTag("Interactable"))
+                                {
+                                    Interaction(item.GetComponent<Iinteractable>());
+                                    break;
+                                }
                             }
                         }
                     }
@@ -126,5 +131,17 @@ public class PlayerControllerScript : InventoryInteraction
         {
             base.RemoveItem(ItemIndex);
         }
+    }
+
+    public void GiveFeedBack(string feedback)
+    {
+        feedbackText.text = feedback;
+        StartCoroutine(ResetText());
+    }
+
+    private IEnumerator ResetText()
+    {
+        yield return new WaitForSeconds(10);
+        feedbackText.text = "";
     }
 }
