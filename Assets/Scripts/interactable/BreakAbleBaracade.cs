@@ -10,8 +10,10 @@ public class BreakAbleBaracade : MonoBehaviour, Iinteractable
     }
 
     public void OnCollisionEnter(Collision collision)
-    { 
-        if(collision.relativeVelocity.z < -30)
+    {
+        float collisionForce = collision.impulse.magnitude / Time.fixedDeltaTime;
+         
+        if (collisionForce > 900)
         {
             Destroy(this.gameObject);
         }

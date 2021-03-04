@@ -15,6 +15,10 @@ public class InventoryInteraction : MonoBehaviour
 
     private GameObject inventoryPanel;
 
+    private GameObject riddlePanel;
+    protected string riddleAwnser;
+    public bool riddleAwnsered;
+
     [Space(10)]
     [Header("the button prefab for ui")]
     public GameObject Uipiece;
@@ -25,6 +29,7 @@ public class InventoryInteraction : MonoBehaviour
         inventory = new Inventory(initalMaxWeight);
 
         inventoryPanel = transform.GetChild(0).GetChild(0).GetChild(0).gameObject;
+        riddlePanel = transform.GetChild(0).GetChild(0).GetChild(1).gameObject;
     }
 
     public virtual bool AddItem(GameObject itemObject, ItemProperties item = null)
@@ -77,6 +82,43 @@ public class InventoryInteraction : MonoBehaviour
             inventoryPanel.transform.GetChild(i).gameObject.SetActive(true);
 
             inventoryPanel.transform.GetChild(i).gameObject.GetComponent<Text>().text = inventory.items[i - 1].itemName;
+        }
+    }
+
+    protected void OpenCloseRiddlePanel(string riddle, string awnser)
+    {
+        riddlePanel.gameObject.SetActive(!riddlePanel.activeSelf);
+
+        riddlePanel.transform.GetChild(1).gameObject.GetComponent<Text>().text = riddle;
+
+        riddleAwnser = awnser;
+
+        if (Cursor.lockState == CursorLockMode.Locked)
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+    }
+
+    protected string GetRiddleInput()
+    {
+        return riddlePanel.transform.GetChild(0).GetChild(2).gameObject.GetComponent<Text>().text;
+    }
+
+    public void CloseRiddle()
+    {
+        riddlePanel.gameObject.SetActive(!riddlePanel.activeSelf);
+
+        if (Cursor.lockState == CursorLockMode.Locked)
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
         }
     }
 }

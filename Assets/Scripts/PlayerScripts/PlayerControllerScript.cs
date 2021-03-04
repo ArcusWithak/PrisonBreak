@@ -125,6 +125,22 @@ public class PlayerControllerScript : InventoryInteraction
         return inventory.CanOpenDoor(id);
     }
 
+    public void OpenRiddle(string riddle, string awnser)
+    {
+        OpenCloseRiddlePanel(riddle, awnser);
+    }
+
+    public void RiddleInput()
+    {
+        riddleAwnsered = true;
+    }
+
+    public bool CheckRiddle()
+    {
+        string awnser = GetRiddleInput();
+        return awnser == riddleAwnser;
+    }
+
     public override void RemoveItem(int ItemIndex)
     {
         if (inventory.RemoveItem(ItemIndex))

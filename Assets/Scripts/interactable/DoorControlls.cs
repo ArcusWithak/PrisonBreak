@@ -7,29 +7,34 @@ public class DoorControlls : MonoBehaviour, Iinteractable
     //properties
     public int doorIndex;
     private bool open;
-    private Vector3 startingRotation;
+    private Quaternion startingRotation;
+    private float startingRotationY;
 
     //methods
     public void Start()
     {
-        startingRotation = transform.rotation.eulerAngles;
+        startingRotation = transform.rotation;
+        startingRotationY = transform.rotation.y;
         tag = "Interactable";
+    }
+
+    private void Update()
+    {
+        if (!open && transform.eulerAngles.y < startingRotationY + 90)
+        {
+            transform.rotation = Quaternion.RotateTowards(startingRotation, Quaternion.Euler(0, startingRotationY + 90, 0), 1);
+        }
+        else if (open && transform.eulerAngles.y > startingRotationY)
+        {
+            transform.rotation = Quaternion.RotateTowards(Quaternion.Euler(0, startingRotationY + 90, 0), startingRotation, 1);
+        }
     }
 
     public void action(PlayerControllerScript player)
     {
         if (player.OpenDoor(doorIndex))
         {
-            if (open)
-            {
-                open = false;
-                transform.eulerAngles = startingRotation;
-            }
-            else
-            {
-                open = true;
-                transform.eulerAngles = startingRotation + new Vector3(0, 90, 0);
-            }
+            open = !open;
         }
         else
         {
