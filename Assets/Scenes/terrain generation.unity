@@ -156,10 +156,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: {x: 512, y: 512}
-  scale: 5
+  scale: 2.5
   octaves: 5
-  lacunarity: 2
-  presistense: 0.61
+  lacunarity: 2.13
+  presistense: 0.55
   offSet: {x: 0, y: 0}
 --- !u!64 &29112900
 MeshCollider:

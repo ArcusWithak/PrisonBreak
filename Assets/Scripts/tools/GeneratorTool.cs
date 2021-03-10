@@ -41,7 +41,7 @@ public class GeneratorTool
             for (int x = 0; x < witdh; x++)
             {
                 result[x, y] = 0;
-                float frequency = 0.005f;
+                float frequency = scale;
                 float amplitude = 1;
 
                 for (int i = 0; i < octaves; i++)
