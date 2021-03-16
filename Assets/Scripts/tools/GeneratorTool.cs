@@ -29,7 +29,39 @@ public class GeneratorTool
         return texture;
     }
 
-    public static float[,] GenerateTerrainData(int witdh, int height, float scale, int octaves, float lacunarity, float presistense, Vector2 offset)
+    public static float[,] FilterMap(float[,] data, float innerRadius, float outerRadius)
+    {
+        Vector2Int center = new Vector2Int(data.GetLength(0) / 2, data.GetLength(1) / 2);
+
+        for (int y = 0; y < data.GetLength(0); y++)
+        {
+            for (int x = 0; x < data.GetLength(1); x++)
+            {
+                Vector2Int point = new Vector2Int(x, y);
+                float distance = Vector2.Distance(center, point);
+                float multiplier;
+
+                if (distance < innerRadius)
+                {
+                    multiplier = 1.0f;
+                }
+                else if (distance > outerRadius)
+                {
+                    multiplier = 0.0f;
+                }
+                else
+                {
+                    multiplier = GeneratorTool.Map(distance, innerRadius, outerRadius, 1f, 0f);
+                }
+
+                data[x, y] *= multiplier;
+            }
+        }
+
+        return data;
+    }
+
+    public static float[,] GenerateTerrainData(int witdh, int height, float scale, float baseAmplitude, int octaves, float lacunarity, float presistense, Vector3 offset)
     {
         float[,] result = new float[witdh, height];
 
@@ -48,7 +80,7 @@ public class GeneratorTool
                 {
                     frequency *= lacunarity;
                     amplitude *= presistense;
-                    result[x, y] += GetPerlinValue(x + offset.x, y + offset.y, frequency, amplitude);
+                    result[x, y] += GetPerlinValue(x + offset.x, y + offset.y, frequency, amplitude + offset.z / 100.0f);
 
                     if (result[x, y] > maxValue)
                     {
@@ -62,20 +94,19 @@ public class GeneratorTool
             }
         }
 
-        for (int y = 0; y < height; y++)
-        {
-            for (int x = 0; x < witdh; x++)
-            {
-                result[x, y] = Mathf.InverseLerp(minValue, maxValue, result[x, y]);
-            }
-        }
-
         return result;
+    }
+
+    public static float Map(float value, float valueMin, float valueMax, float resultMin, float resultMax)
+    {
+        if (resultMin == resultMax) return resultMin;
+        if (valueMin == valueMax) return resultMax;
+        return resultMin + (value - valueMin) * (resultMax - resultMin) / (valueMax - valueMin);
     }
 
     public static float GetPerlinValue(float x, float y, float frequency, float amplitude)
     {
-        float result = Mathf.PerlinNoise(x * frequency, y * frequency) * amplitude;
+        float result = (Mathf.PerlinNoise(x * frequency, y * frequency) * 2f - 1) * amplitude;
 
         return result;
     }

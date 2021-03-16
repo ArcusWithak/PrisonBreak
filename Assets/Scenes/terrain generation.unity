@@ -142,7 +142,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &29112899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,11 +156,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: {x: 512, y: 512}
-  scale: 2.5
+  scale: 0.75
+  baseAmplitude: 0.5
   octaves: 5
-  lacunarity: 2.13
-  presistense: 0.55
-  offSet: {x: 0, y: 0}
+  lacunarity: 1.25
+  presistense: 0.6
+  offSet: {x: 0, y: 0, z: -10}
 --- !u!64 &29112900
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -231,13 +232,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 29112898}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.5412054, y: -17.133444, z: 7.138812}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 512, y: 92, z: 502}
+  m_LocalScale: {x: 100, y: 1, z: -100}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &387395631
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,6 +425,7 @@ GameObject:
   - component: {fileID: 1920250708}
   - component: {fileID: 1920250707}
   - component: {fileID: 1920250706}
+  - component: {fileID: 1920250709}
   m_Layer: 0
   m_Name: Terrain
   m_TagString: Untagged
@@ -487,5 +489,27 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1920250709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920250705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cd4691ce817f344d8bc0b3d8d1c2fde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  size: {x: 512, y: 512}
+  scale: 0.75
+  baseAmplitude: 0.5
+  octaves: 5
+  lacunarity: 1.5
+  presistense: 0.5
+  offSet: {x: 98510, y: 123211, z: 0}
+  t: {fileID: 1920250707}
+  innerRadius: 200
+  outerRadius: 260
