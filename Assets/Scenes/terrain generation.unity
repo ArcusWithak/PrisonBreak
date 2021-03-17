@@ -504,7 +504,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd4691ce817f344d8bc0b3d8d1c2fde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  autoGeneration: 0
+  autoGeneration: 1
   size: {x: 512, y: 512}
   scale: 0.75
   baseAmplitude: 0.52
@@ -514,8 +514,14 @@ MonoBehaviour:
   offSet: {x: 2000, y: 600, z: 0}
   t: {fileID: 1920250707}
   layers:
-  - name: grasslayer
-    heightTrigger: 10
-    fadeAmount: 6
+  - name: Stone
+    heightTrigger: 0.8
+    fadeAmount: 0
+  - name: grass
+    heightTrigger: 0.6
+    fadeAmount: 0
+  - name: sand
+    heightTrigger: 0.4
+    fadeAmount: 0
   innerRadius: 200
   outerRadius: 260
