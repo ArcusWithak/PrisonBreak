@@ -4,7 +4,7 @@ using UnityEngine;
 using SimpleJSON;
 using UnityEngine.Networking;
 
-public class FinalDoorLock : MonoBehaviour, Iinteractable
+public class FinalDoorLock : SceneHandeler, Iinteractable
 {
     private string awnser;
     private string riddle;
@@ -30,6 +30,10 @@ public class FinalDoorLock : MonoBehaviour, Iinteractable
 
             StartCoroutine(DoorCheck(player));
         }
+        else
+        {
+            LoadNewScene();
+        }
     }
 
     private IEnumerator DoorCheck(PlayerControllerScript player)
@@ -49,9 +53,7 @@ public class FinalDoorLock : MonoBehaviour, Iinteractable
     {
         unlocked = true;
 
-        Quaternion startingRotation = transform.rotation;
-        float startingRotationY = transform.rotation.y;
-        transform.rotation = Quaternion.Euler(0, startingRotationY + 90, 0);
+        LoadNewScene();
     }
 
     public IEnumerator CallApi()
