@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TerrainConfig : MonoBehaviour
 {
+    public bool autoGeneration = false;
+
     public Vector2 size;
     public float scale = 1f;
     [Range(0, 1)]
@@ -33,6 +35,6 @@ public class TerrainConfig : MonoBehaviour
 
     private void OnValidate()
     {
-        UpdateTerrainData(generateTerrainData());
+        if(autoGeneration) UpdateTerrainData(generateTerrainData());
     }
 }
