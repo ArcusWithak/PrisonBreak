@@ -13,6 +13,7 @@ public class TerrainManagement : TerrainConfig
     {
         t.terrainData.heightmapResolution = (int)size.x;
         t.terrainData.SetHeights(0, 0, data);
+        UpdateTerrainTexture(data);
     }
     protected void UpdateTerrainTexture(float[,] data)
     {

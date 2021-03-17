@@ -52,7 +52,7 @@ public class GeneratorTool
                 }
                 else
                 {
-                    multiplier = GeneratorTool.Map(distance, innerRadius, outerRadius, 1f, 0f);
+                    multiplier = Map(distance, innerRadius, outerRadius, 1f, 0f);
                 }
 
                 data[x, y] *= multiplier;
@@ -75,13 +75,13 @@ public class GeneratorTool
             {
                 result[x, y] = 0;
                 float frequency = scale;
-                float amplitude = 1;
+                float amplitude = baseAmplitude;
 
                 for (int i = 0; i < octaves; i++)
                 {
                     frequency *= lacunarity;
                     amplitude *= presistense;
-                    result[x, y] += GetPerlinValue(x + offset.x, y + offset.y, frequency, amplitude + offset.z / 100.0f);
+                    result[x, y] += (GetPerlinValue(x + offset.x, y + offset.y, frequency, amplitude) + offset.z / 100.0f);
 
                     if (result[x, y] > maxValue)
                     {
