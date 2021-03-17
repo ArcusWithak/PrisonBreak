@@ -9,9 +9,26 @@ public class IslandManager : TerrainManagement
     public float innerRadius;
     [Tooltip("Area at the edges of the island that will be completely flat.")]
     public float outerRadius;
+
+    public bool RegenerateRaftParts = false;
+
+    public GameObject[] raftParts;
     protected override void UpdateTerrainData(float[,] data)
     {
         data = GeneratorTool.FilterMap(data, innerRadius, outerRadius);
         base.UpdateTerrainData(data);
+        if (RegenerateRaftParts) { GenerateRaftItems(data); }
+    }
+
+    protected void GenerateRaftItems(float[,] data)
+    {
+        RegenerateRaftParts = false;
+        Vector2 center = new Vector2(size.x, size.y);
+        foreach (GameObject part in raftParts)
+        {
+            Vector3 spawnPoint = Random.insideUnitCircle * (outerRadius / 2) + center;
+            spawnPoint = new Vector3(spawnPoint.x, 150, spawnPoint.y);
+            Instantiate(part, spawnPoint, Quaternion.identity);
+        }
     }
 }

@@ -4,8 +4,10 @@ using UnityEngine;
 using SimpleJSON;
 using UnityEngine.Networking;
 
-public class FinalDoorLock : SceneHandeler, Iinteractable
+public class FinalDoorLock : MonoBehaviour, Iinteractable
 {
+    public Vector3 TeleportPosition;
+
     private string awnser;
     private string riddle;
     private bool unlocked;
@@ -32,7 +34,7 @@ public class FinalDoorLock : SceneHandeler, Iinteractable
         }
         else
         {
-            LoadNewScene();
+            player.transform.position = TeleportPosition;
         }
     }
 
@@ -44,16 +46,16 @@ public class FinalDoorLock : SceneHandeler, Iinteractable
 
         if (player.CheckRiddle())
         {
-            OpenDoor();
+            OpenDoor(player);
             player.CloseRiddle();
         }
     }
 
-    public void OpenDoor()
+    public void OpenDoor(PlayerControllerScript player)
     {
         unlocked = true;
 
-        LoadNewScene();
+        player.transform.position = TeleportPosition;
     }
 
     public IEnumerator CallApi()
