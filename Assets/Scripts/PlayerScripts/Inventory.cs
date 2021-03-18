@@ -122,6 +122,21 @@ public class Inventory
         return result;
     }
 
+    public virtual List<int> CheckForRaftParts()
+    {
+        List<int> indexs = new List<int>();
+
+        for(int i=0; i < items.Count; i++)
+        {
+            if (items[i] is RaftItem)
+            {
+                indexs.Add(i);
+            }
+        }
+
+        return indexs;
+    }
+
     /// <summary>
     /// Debuggin methods
     /// </summary>

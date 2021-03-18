@@ -6,7 +6,7 @@ using UnityEngine.Networking;
 
 public class MonsterBook : MonoBehaviour, Iinteractable
 {
-    public void action(PlayerControllerScript player)
+    public void Action(PlayerControllerScript player)
     {
         StartCoroutine(CallApi(player));
     }

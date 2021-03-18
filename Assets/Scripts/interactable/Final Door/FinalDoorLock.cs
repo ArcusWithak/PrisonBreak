@@ -19,7 +19,7 @@ public class FinalDoorLock : MonoBehaviour, Iinteractable
         StartCoroutine(CallApi());
     }
 
-    public void action(PlayerControllerScript player)
+    public void Action(PlayerControllerScript player)
     {
         if (!unlocked)
         {
@@ -30,7 +30,7 @@ public class FinalDoorLock : MonoBehaviour, Iinteractable
                 StopCoroutine(doorCheckInProgress);
             }
 
-            StartCoroutine(DoorCheck(player));
+            doorCheckInProgress = StartCoroutine(DoorCheck(player));
         }
         else
         {

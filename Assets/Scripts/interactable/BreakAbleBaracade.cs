@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BreakAbleBaracade : MonoBehaviour, Iinteractable
 {
-    public void action(PlayerControllerScript player)
+    public void Action(PlayerControllerScript player)
     {
         player.GiveFeedBack("This stone is cracked, it should break if you hit it hard enough");
     }

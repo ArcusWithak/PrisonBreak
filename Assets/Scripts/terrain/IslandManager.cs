@@ -10,9 +10,14 @@ public class IslandManager : TerrainManagement
     [Tooltip("Area at the edges of the island that will be completely flat.")]
     public float outerRadius;
 
+    [Header("Raft Parts Generation")]
+    [Space(10)]
+    [Tooltip("click this button to respawn the raft Parts on a random Location")]
     public bool RegenerateRaftParts = false;
 
+    [Space(10)]
     public GameObject[] raftParts;
+
     protected override void UpdateTerrainData(float[,] data)
     {
         data = GeneratorTool.FilterMap(data, innerRadius, outerRadius);

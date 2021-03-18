@@ -108,7 +108,7 @@ public class PlayerControllerScript : InventoryInteraction
 
     public void Interaction(Iinteractable interactable)
     {
-        interactable.action(this);
+        interactable.Action(this);
     }
 
     public override bool AddItem(GameObject itemObject, ItemProperties item = null)
@@ -141,11 +141,11 @@ public class PlayerControllerScript : InventoryInteraction
         return awnser == riddleAwnser;
     }
 
-    public override void RemoveItem(int ItemIndex)
+    public override void RemoveItem(int ItemIndex, bool throwObject = true)
     {
         if (inventory.RemoveItem(ItemIndex))
         {
-            base.RemoveItem(ItemIndex);
+            base.RemoveItem(ItemIndex, throwObject);
         }
     }
 

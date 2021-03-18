@@ -39,17 +39,36 @@ public class InventoryInteraction : MonoBehaviour
         return true;
     }
 
-    public virtual void RemoveItem(int ItemIndex)
+    public virtual void RemoveItem(int ItemIndex, bool throwObject = true)
     {
-        inventoryItems[ItemIndex].transform.position = transform.position + (transform.forward * 2);
-        inventoryItems[ItemIndex].transform.rotation = Quaternion.identity;
-        inventoryItems[ItemIndex].SetActive(true);
+        if (throwObject)
+        {
+            inventoryItems[ItemIndex].transform.position = transform.position + (transform.forward * 2);
+            inventoryItems[ItemIndex].transform.rotation = Quaternion.identity;
+            inventoryItems[ItemIndex].SetActive(true);
 
-        inventoryItems[ItemIndex].GetComponent<Rigidbody>().AddForceAtPosition(new Vector3(0, 100, 0) + (transform.forward * 1000), transform.position);
+            inventoryItems[ItemIndex].GetComponent<Rigidbody>().AddForceAtPosition(new Vector3(0, 100, 0) + (transform.forward * 1000), transform.position);
+        }
 
         inventoryItems.Remove(inventoryItems[ItemIndex]);
 
         UpdateInventoryUi();
+    }
+
+    public List<GameObject> AddRaftParts()
+    {
+        List<GameObject> value = new List<GameObject>();
+
+        int i = 0;
+
+        foreach (int index in inventory.CheckForRaftParts())
+        {
+            value.Add(inventoryItems[index - i]);
+            RemoveItem(index - i, false);
+            i++;
+        }
+
+        return value;
     }
 
     protected void OpenCloseInventoryUi()

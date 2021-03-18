@@ -14,7 +14,7 @@ public abstract class PickUp : MonoBehaviour, Iinteractable
         tag = "Interactable";
     }
 
-    public void action(PlayerControllerScript player)
+    public void Action(PlayerControllerScript player)
     {
         player.AddItem(this.gameObject, CreateItem());
     }

@@ -30,7 +30,7 @@ public class DoorControlls : MonoBehaviour, Iinteractable
         }
     }
 
-    public void action(PlayerControllerScript player)
+    public void Action(PlayerControllerScript player)
     {
         if (player.OpenDoor(doorIndex))
         {
