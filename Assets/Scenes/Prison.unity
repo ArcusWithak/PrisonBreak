@@ -4045,6 +4045,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   list: []
+  partNumberRequired: 0
 --- !u!65 &1044829935
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7045,7 +7046,7 @@ MonoBehaviour:
   layers:
   - name: sand
     heightTrigger: 0.15
-    fadeAmount: 0.3
+    fadeAmount: 0.1
   - name: grass
     heightTrigger: 0.5
     fadeAmount: 0.05
@@ -7057,7 +7058,7 @@ MonoBehaviour:
   treeLayers:
   - name: loaf tree
     index: 0
-    minHeight: 0.2
+    minHeight: 0.26
     maxHeight: 0.5
     density: 0.01
   innerRadius: 50
