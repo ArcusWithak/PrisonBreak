@@ -16,7 +16,15 @@ public class FinalDoorLock : MonoBehaviour, Iinteractable
 
     private void Start()
     {
-        StartCoroutine(CallApi());
+        switch (Random.Range(0, 2))
+        {
+            case 0:
+                StartCoroutine(CallApi("adult-black-dragon"));
+                break;
+            case 1:
+                StartCoroutine(CallApi("basilisk"));
+                break;
+        }
     }
 
     public void Action(PlayerControllerScript player)
@@ -58,9 +66,9 @@ public class FinalDoorLock : MonoBehaviour, Iinteractable
         player.transform.position = TeleportPosition;
     }
 
-    public IEnumerator CallApi()
+    public IEnumerator CallApi(string monsterName)
     {
-        using (UnityWebRequest www = UnityWebRequest.Get("https://www.dnd5eapi.co/api/monsters/adult-black-dragon/"))
+        using (UnityWebRequest www = UnityWebRequest.Get($"https://www.dnd5eapi.co/api/monsters/{monsterName}/"))
         {
             yield return www.SendWebRequest();
 

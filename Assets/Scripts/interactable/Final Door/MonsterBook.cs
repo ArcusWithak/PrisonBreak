@@ -6,6 +6,8 @@ using UnityEngine.Networking;
 
 public class MonsterBook : MonoBehaviour, Iinteractable
 {
+    public string monsterName;
+
     public void Action(PlayerControllerScript player)
     {
         StartCoroutine(CallApi(player));
@@ -13,7 +15,9 @@ public class MonsterBook : MonoBehaviour, Iinteractable
 
     public IEnumerator CallApi(PlayerControllerScript player)
     {
-        using (UnityWebRequest www = UnityWebRequest.Get("https://www.dnd5eapi.co/api/monsters/adult-black-dragon/"))
+        monsterName = monsterName.ToLower();
+        monsterName = monsterName.Replace(" ", "-");
+        using (UnityWebRequest www = UnityWebRequest.Get($"https://www.dnd5eapi.co/api/monsters/{monsterName}/"))
         {
             yield return www.SendWebRequest();
 
