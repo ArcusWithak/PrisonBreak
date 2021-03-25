@@ -11,8 +11,13 @@ public class BreakAbleBaracade : MonoBehaviour, Iinteractable
 
     public void OnCollisionEnter(Collision collision)
     {
+        BreakObject(collision);
+    }
+
+    protected virtual void BreakObject(Collision collision)
+    {
         float collisionForce = collision.impulse.magnitude / Time.fixedDeltaTime;
-         
+
         if (collisionForce > 900)
         {
             Destroy(this.gameObject);

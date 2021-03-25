@@ -155,6 +155,7 @@ GameObject:
   - component: {fileID: 1251593433356243573}
   - component: {fileID: 4249404810947031948}
   - component: {fileID: 981583541762323427}
+  - component: {fileID: 1133387385}
   m_Layer: 0
   m_Name: SHELF
   m_TagString: Untagged
@@ -225,3 +226,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1133387385
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7387392559748399079}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 94.8475, y: 145.45961, z: 31.405197}
+  m_Center: {x: 3.6915493, y: 85.1126, z: 27.116806}

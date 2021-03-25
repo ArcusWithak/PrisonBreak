@@ -57,7 +57,7 @@ public class TerrainManagement : TerrainConfig
             }
 
             t.terrainData.SetTreeInstances(trees.ToArray(), true);
-            t.Flush();
+            //t.Flush();
         }
     }
 }
