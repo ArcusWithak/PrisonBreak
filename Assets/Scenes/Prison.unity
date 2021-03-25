@@ -6180,6 +6180,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1600
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 780611a67e8e941a2b3aa96e5915a793, type: 3}
+      propertyPath: waterMode
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 780611a67e8e941a2b3aa96e5915a793, type: 3}
 --- !u!1 &969652568
@@ -12349,12 +12353,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   autoGeneration: 1
   size: {x: 1024, y: 1024}
-  scale: 1.25
-  baseAmplitude: 1
+  scale: 0.5
+  baseAmplitude: 0.673
   octaves: 7
-  lacunarity: 1.5
-  presistense: 0.1
-  offSet: {x: 0, y: 300, z: 10}
+  lacunarity: 1.7
+  presistense: 0.6
+  offSet: {x: 0, y: 300, z: 4}
   t: {fileID: 1920250707}
   layers:
   - name: sand
@@ -12374,8 +12378,8 @@ MonoBehaviour:
     minHeight: 0.2
     maxHeight: 0.5
     density: 0.01
-  innerRadius: 50
-  outerRadius: 350
+  innerRadius: 300
+  outerRadius: 500
   RegenerateRaftParts: 0
   raftParts:
   - {fileID: 6431139742075027818, guid: 458003375e592114091f93ceccdac7be, type: 3}
