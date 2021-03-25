@@ -72,6 +72,7 @@ public class PlayerControllerScript : InventoryInteraction
 
                         if (Vector3.Angle(direction, transform.forward) < 45)
                         {
+                            
                             RaycastHit hit;
                             if (Physics.Raycast(transform.position, transform.forward, out hit, pickUpRange))
                             {
@@ -79,6 +80,10 @@ public class PlayerControllerScript : InventoryInteraction
                                 {
                                     Interaction(item.GetComponent<Iinteractable>());
                                     break;
+                                }
+                                else
+                                {
+                                    print(hit.transform.tag);
                                 }
                             }
                         }
@@ -141,11 +146,19 @@ public class PlayerControllerScript : InventoryInteraction
         return awnser == riddleAwnser;
     }
 
-    public override void RemoveItem(int ItemIndex, bool throwObject = true)
+    public override void RemoveItem(int ItemIndex, bool throwObject)
     {
         if (inventory.RemoveItem(ItemIndex))
         {
             base.RemoveItem(ItemIndex, throwObject);
+        }
+    }
+
+    public override void RemoveItem(int ItemIndex)
+    {
+        if (inventory.RemoveItem(ItemIndex))
+        {
+            base.RemoveItem(ItemIndex);
         }
     }
 
