@@ -32,7 +32,8 @@ public class IslandManager : TerrainManagement
         foreach (GameObject part in raftParts)
         {
             Vector3 spawnPoint = Random.insideUnitCircle * (outerRadius / 2) + center;
-            spawnPoint = new Vector3(spawnPoint.x, 150, spawnPoint.y);
+            spawnPoint = new Vector3(spawnPoint.x, 0, spawnPoint.y);
+            spawnPoint = new Vector3(spawnPoint.x, t.SampleHeight(spawnPoint) + 1, spawnPoint.z);
             Instantiate(part, spawnPoint, Quaternion.identity);
         }
     }
