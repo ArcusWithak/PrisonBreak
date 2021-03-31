@@ -22,19 +22,19 @@ public class DoorControlls : MonoBehaviour, Iinteractable
 
     private void Update()
     {
-        if (!open && transform.eulerAngles.y < startingRotationY + 90)
+        if (open)
         {
-            transform.rotation = Quaternion.RotateTowards(startingRotation, Quaternion.Euler(0, startingRotationY + 90, 0), 1);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, startingRotationY + 90, 0), Time.deltaTime * 2.5f);
         }
-        else if (open && transform.eulerAngles.y > startingRotationY)
+        else
         {
-            transform.rotation = Quaternion.RotateTowards(Quaternion.Euler(0, startingRotationY + 90, 0), startingRotation, 1);
+            transform.rotation = Quaternion.Slerp(transform.rotation, startingRotation, Time.deltaTime * 2.5f);
         }
     }
 
     public void Action(PlayerControllerScript player)
     {
-        if(!doorUnlocked)
+        if (!doorUnlocked)
         {
             if (player.OpenDoor(doorIndex))
             {
