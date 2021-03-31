@@ -1,0 +1,107 @@
+newmtl Preview:1
+Ns 50
+Ka 0 0 0
+Kd 0.756451 0.667392 0.86099
+Ks 0.131797 0.10539 0.0934635
+d 1
+newmtl Preview:1:1
+Ns 59.9999
+Ka 0 0 0
+Kd 0.988235 0.988235 0.988235
+Ks 0.0629292 0.129075 0.0109989
+d 1
+newmtl 1leg:2:1
+Ns 59.9999
+Ka 0 0 0
+Kd 0.996078 0.996078 0.996078
+Ks 0.0138249 0.0531388 0.181811
+map_Kd WorkBenchTop.jpg
+d 1
+newmtl 2leg:3:1
+Ns 59.9999
+Ka 0 0 0
+Kd 0.992157 0.992157 0.992157
+Ks 0.0601886 0.162908 0.0657857
+map_Kd WorkBenchTop.jpg
+d 1
+newmtl 3leg:4:1
+Ns 59.9999
+Ka 0 0 0
+Kd 0.988235 0.988235 0.988235
+Ks 0.015656 0.0208197 0.170165
+map_Kd WorkBenchTop.jpg
+d 1
+newmtl 4leg:5:1
+Ns 59.9999
+Ka 0 0 0
+Kd 0.996078 0.996078 0.996078
+Ks 0.177367 0.0321543 0.0257088
+map_Kd WorkBenchTop.jpg
+d 1
+newmtl TableTop:1
+Ns 50
+Ka 0 0 0
+Kd 0.988235 0.988235 0.988235
+Ks 0.131837 0.185386 0.180494
+map_Kd WorkBenchTop.jpg
+d 1
+newmtl Preview:2
+Ns 50
+Ka 0 0 0
+Kd 0.756451 0.667392 0.86099
+Ks 0.131797 0.10539 0.0934635
+d 1
+newmtl Preview:1:2
+Ns 59.9999
+Ka 0 0 0
+Kd 0.988235 0.988235 0.988235
+Ks 0.0629292 0.129075 0.0109989
+map_Kd WorkBenchTop.jpg
+d 1
+newmtl TableBack:2
+Ns 50
+Ka 0 0 0
+Kd 0.996078 0.996078 0.996078
+Ks 0.0895032 0.0802014 0.144332
+map_Kd WorkBenchTop.jpg
+d 1
+newmtl Preview:3
+Ns 59.9999
+Ka 0 0 0
+Kd 0.988235 0.988235 0.988235
+Ks 0.0321177 0.14312 0.108481
+map_Kd WorkBenchTop.jpg
+d 1
+newmtl TopShelf:3
+Ns 50
+Ka 0 0 0
+Kd 0.988235 0.988235 0.988235
+Ks 0.139846 0.196721 0.0850547
+map_Kd WorkBenchTop.jpg
+d 1
+newmtl Preview:4
+Ns 50
+Ka 0 0 0
+Kd 0.756451 0.667392 0.86099
+Ks 0.131797 0.10539 0.0934635
+d 1
+newmtl 1leg:2:4
+Ns 59.9999
+Ka 0 0 0
+Kd 0.996078 0.996078 0.996078
+Ks 0.0138249 0.0531388 0.181811
+map_Kd WorkBenchTop.jpg
+d 1
+newmtl Preview:5
+Ns 50
+Ka 0 0 0
+Kd 0.756451 0.667392 0.86099
+Ks 0.131797 0.10539 0.0934635
+d 1
+newmtl 1leg:2:5
+Ns 59.9999
+Ka 0 0 0
+Kd 0.996078 0.996078 0.996078
+Ks 0.0138249 0.0531388 0.181811
+map_Kd WorkBenchTop.jpg
+d 1

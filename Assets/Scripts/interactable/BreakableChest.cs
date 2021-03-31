@@ -11,7 +11,7 @@ public class BreakableChest : BreakAbleBaracade
     {
         float collisionForce = collision.impulse.magnitude / Time.fixedDeltaTime;
 
-        if (collisionForce > 900)
+        if (collisionForce > 500)
         {
             if (!empty)
             {

@@ -18,7 +18,7 @@ public class BreakAbleBaracade : MonoBehaviour, Iinteractable
     {
         float collisionForce = collision.impulse.magnitude / Time.fixedDeltaTime;
 
-        if (collisionForce > 900)
+        if (collisionForce > 500)
         {
             Destroy(this.gameObject);
         }

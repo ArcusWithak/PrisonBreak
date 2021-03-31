@@ -112,7 +112,7 @@ public class PlayerControllerScript : InventoryInteraction
 
         if(transform.position.y < 15 && transform.position.y > 0)
         {
-            rB.AddForceAtPosition((-Physics.gravity / (transform.position.y / 5f)), transform.position + -transform.up, ForceMode.Force);
+            rB.AddForceAtPosition(-Physics.gravity , transform.position + -transform.up, ForceMode.Force);
         }
     }
 

@@ -8,13 +8,15 @@ public class RaftBuildLocation : MonoBehaviour, Iinteractable
 
     public int partNumberRequired;
 
+    public GameObject raft;
+
     private bool built = false;
 
     public void Action(PlayerControllerScript player)
     {
         if (built)
         {
-            //TODO: do stuff
+            Instantiate(raft, new Vector3(1410, 14.9f, 905), Quaternion.Euler(-90, 0 ,0));
         }
         else
         {
