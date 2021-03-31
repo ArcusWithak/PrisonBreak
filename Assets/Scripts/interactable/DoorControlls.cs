@@ -5,6 +5,8 @@ using UnityEngine;
 public class DoorControlls : MonoBehaviour, Iinteractable
 {
     //properties
+    public bool doorUnlocked = false;
+
     public int doorIndex;
     private bool open;
     private Quaternion startingRotation;
@@ -32,13 +34,21 @@ public class DoorControlls : MonoBehaviour, Iinteractable
 
     public void Action(PlayerControllerScript player)
     {
-        if (player.OpenDoor(doorIndex))
+        if(!doorUnlocked)
         {
-            open = !open;
+            if (player.OpenDoor(doorIndex))
+            {
+                doorUnlocked = true;
+                open = !open;
+            }
+            else
+            {
+                player.GiveFeedBack("it's locked, have to find the key");
+            }
         }
         else
         {
-            player.GiveFeedBack("it's locked, have to find the key");
+            open = !open;
         }
     }
 }
