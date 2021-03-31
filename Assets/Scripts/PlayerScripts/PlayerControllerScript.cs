@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PlayerControllerScript : InventoryInteraction
 {
     private Transform cameraTransfrom;
-
+    private Rigidbody rB;
 
     [Header("Movement Speed")]
     public float speed = 5;
@@ -27,6 +27,7 @@ public class PlayerControllerScript : InventoryInteraction
 
         Cursor.lockState = CursorLockMode.Locked;
         cameraTransfrom = transform.GetChild(0);
+        rB = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -72,7 +73,7 @@ public class PlayerControllerScript : InventoryInteraction
 
                         if (Vector3.Angle(direction, transform.forward) < 45)
                         {
-                            
+
                             RaycastHit hit;
                             if (Physics.Raycast(transform.position, transform.forward, out hit, pickUpRange))
                             {
@@ -108,6 +109,11 @@ public class PlayerControllerScript : InventoryInteraction
         if (Input.GetKeyDown(KeyCode.I))
         {
             OpenCloseInventoryUi();
+        }
+
+        if(transform.position.y < 15 && transform.position.y > 0)
+        {
+            rB.AddForceAtPosition((-Physics.gravity / (transform.position.y / 5f)), transform.position + -transform.up, ForceMode.Force);
         }
     }
 

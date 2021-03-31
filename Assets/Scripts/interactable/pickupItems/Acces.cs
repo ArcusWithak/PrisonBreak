@@ -8,6 +8,7 @@ public class Acces : PickUp
     public int accesIndex;
 
     //methods
+
     public override ItemProperties CreateItem()
     {
         return new AccesItem(itemName, itemWeight, accesIndex);

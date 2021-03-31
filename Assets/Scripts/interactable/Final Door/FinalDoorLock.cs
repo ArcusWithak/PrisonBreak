@@ -6,7 +6,7 @@ using UnityEngine.Networking;
 
 public class FinalDoorLock : MonoBehaviour, Iinteractable
 {
-    public Vector3 TeleportPosition;
+    public Vector3 teleportPosition;
 
     private string awnser;
     private string riddle;
@@ -16,6 +16,7 @@ public class FinalDoorLock : MonoBehaviour, Iinteractable
 
     private void Start()
     {
+        teleportPosition = new Vector3(teleportPosition.x, Terrain.activeTerrain.SampleHeight(teleportPosition) + 2, teleportPosition.z);
         switch (Random.Range(0, 2))
         {
             case 0:
@@ -42,7 +43,7 @@ public class FinalDoorLock : MonoBehaviour, Iinteractable
         }
         else
         {
-            player.transform.position = TeleportPosition;
+            player.transform.position = teleportPosition;
         }
     }
 
@@ -63,7 +64,7 @@ public class FinalDoorLock : MonoBehaviour, Iinteractable
     {
         unlocked = true;
 
-        player.transform.position = TeleportPosition;
+        player.transform.position = teleportPosition;
     }
 
     public IEnumerator CallApi(string monsterName)

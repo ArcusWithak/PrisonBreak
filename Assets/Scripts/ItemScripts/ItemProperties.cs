@@ -20,4 +20,6 @@ public abstract class ItemProperties
     {
         return $"type is: {base.ToString()}| name is: {itemName}| weight is {itemWeight}";
     }
+
+    
 }

@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class PickUp : MonoBehaviour, Iinteractable
+public abstract class PickUp : itemPhysicProperties, Iinteractable
 {
     //properties
     public string itemName;
     public float itemWeight;
 
     //methods
-    public void Start()
+    public override void Start()
     {
         tag = "Interactable";
+        base.Start();
     }
 
     public void Action(PlayerControllerScript player)
