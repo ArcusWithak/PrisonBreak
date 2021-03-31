@@ -12858,12 +12858,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   autoGeneration: 1
   size: {x: 1024, y: 1024}
-  scale: 1.25
+  scale: 0.5
   baseAmplitude: 1
-  octaves: 7
+  octaves: 10
   lacunarity: 1.5
-  presistense: 0.1
-  offSet: {x: 0, y: 300, z: 10}
+  presistense: 0.61
+  offSet: {x: 0, y: 300, z: 2}
   t: {fileID: 1920250707}
   layers:
   - name: sand
