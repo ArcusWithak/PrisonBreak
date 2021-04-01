@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 5789677292054097653}
   - component: {fileID: 8628307116686793279}
   - component: {fileID: 6952557519490631357}
-  - component: {fileID: 6952557519490631356}
   - component: {fileID: 8740781790282809307}
+  - component: {fileID: 2236763709777881224}
   m_Layer: 0
   m_Name: Row_Boat
   m_TagString: Untagged
@@ -100,19 +100,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &6952557519490631356
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7835449625673268202}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5b4688219291614fb45a9115ebcf5c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ReduceBouancy: 1
 --- !u!64 &8740781790282809307
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -127,3 +114,16 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 8536425139288874787, guid: 3a49be8ab3c8dd447966455fed76f39b, type: 3}
+--- !u!114 &2236763709777881224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7835449625673268202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a8d3f9a87a4e1144a78b951d5b0629d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ReduceBouancy: 1

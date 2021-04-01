@@ -16,7 +16,8 @@ public class RaftBuildLocation : MonoBehaviour, Iinteractable
     {
         if (built)
         {
-            Instantiate(raft, new Vector3(1410, 14.9f, 905), Quaternion.Euler(-90, 0 ,0));
+            player.GiveFeedBack("now to escape");
+            Instantiate(raft, new Vector3(1410, 14.9f, 900), Quaternion.Euler(-90, 0 ,0));
         }
         else
         {
@@ -25,6 +26,11 @@ public class RaftBuildLocation : MonoBehaviour, Iinteractable
             if(list.Count >= partNumberRequired)
             {
                 built = true;
+                player.GiveFeedBack("that should enough wood");
+            }
+            else
+            {
+                player.GiveFeedBack("i'm gonna need more wood");
             }
         }
     }

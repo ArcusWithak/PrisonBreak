@@ -110,7 +110,7 @@ public class PlayerControllerScript : InventoryInteraction
             OpenCloseInventoryUi();
         }
 
-        if(transform.position.y < 15 && transform.position.y > 0)
+        if(transform.position.y < 15 && transform.position.y >= -5)
         {
             rB.AddForceAtPosition(-Physics.gravity , transform.position + -transform.up, ForceMode.Force);
         }

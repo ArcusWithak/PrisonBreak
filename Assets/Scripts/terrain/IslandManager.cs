@@ -33,7 +33,7 @@ public class IslandManager : TerrainManagement
         {
             Vector3 spawnPoint = Random.insideUnitCircle * (outerRadius / 2) + center;
             spawnPoint = new Vector3(spawnPoint.x, 0, spawnPoint.y);
-            spawnPoint = new Vector3(spawnPoint.x, t.SampleHeight(spawnPoint) + 1, spawnPoint.z);
+            spawnPoint = new Vector3(spawnPoint.x, t.SampleHeight(spawnPoint) < 15 ? 15 : t.SampleHeight(spawnPoint) + 1, spawnPoint.z);
             Instantiate(part, spawnPoint, Quaternion.identity);
         }
     }
